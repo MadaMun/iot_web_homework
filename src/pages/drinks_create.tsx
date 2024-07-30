@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout";
-import { Button, Checkbox, Container, Divider, NumberInput, TextInput, Select } from "@mantine/core";
-import { isNotEmpty, useForm } from "@mantine/form";
+import { Button, Container, Divider, NumberInput, TextInput, } from "@mantine/core";
+import { useForm } from "@mantine/form";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { notifications } from "@mantine/notifications";
@@ -27,7 +27,7 @@ export default function DrinkCreatePage() {
   const handleSubmit = async (values: typeof drinkCreateForm.values) => {
     try {
       setIsProcessing(true);
-      const response = await axios.post<Drink>(`/drinks`, values);
+      await axios.post<Drink>(`/drinks`, values);
       notifications.show({
         title: "เพิ่มข้อมูลเครื่องดื่มสำเร็จ",
         message: "ข้อมูลเครื่องดื่มได้รับการเพิ่มเรียบร้อยแล้ว",

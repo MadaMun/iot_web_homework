@@ -3,7 +3,7 @@ import useSWR from "swr";
 import Loading from "../components/loading";
 import { IconAlertTriangleFilled } from "@tabler/icons-react";
 import Layout from "../components/layout";
-import { Button, Container, Divider, Alert, Badge, TextInput, NumberInput } from "@mantine/core";
+import { Button, Container, Divider, Alert, TextInput, NumberInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import axios, { AxiosError } from "axios";
 import { notifications } from "@mantine/notifications";
@@ -36,7 +36,7 @@ export default function MenuByIdPage() {
       const much = orderCreateForm.values.much;
       orderCreateForm.setFieldValue('total_price', much * drink.prics);
     }
-  }, [orderCreateForm.values.much, drink]);
+  });
 
   const handleSubmit = async (values: typeof orderCreateForm.values) => {
     try {
@@ -45,7 +45,7 @@ export default function MenuByIdPage() {
         ...values,
         order_date: new Date().toISOString(),
       };
-      const response = await axios.post<Order>(`/orders`, orderValues);
+      await axios.post<Order>(`/orders`, orderValues);
       notifications.show({
         title: "เพิ่มข้อมูลเครื่องดื่มสำเร็จ",
         message: "ข้อมูลเครื่องดื่มได้รับการเพิ่มเรียบร้อยแล้ว",

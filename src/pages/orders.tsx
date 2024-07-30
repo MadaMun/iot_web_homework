@@ -3,9 +3,8 @@ import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
 import useSWR from "swr";
 import { Order, Drink } from "../lib/models";
 import Loading from "../components/loading";
-import { Alert, Button } from "@mantine/core";
-import { IconAlertTriangleFilled, IconPlus } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { Alert } from "@mantine/core";
+import { IconAlertTriangleFilled } from "@tabler/icons-react";
 
 export default function OrdersPage() {
   const { data: orders, error: ordersError } = useSWR<Order[]>("/orders");
